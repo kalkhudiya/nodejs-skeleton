@@ -1,0 +1,62 @@
+
+.cursor-pointer {
+    cursor: pointer;
+}
+.text-right {
+    text-align: right;
+}
+.main-bar {
+    margin-top: 50px;
+}
+.menu-bar {
+    position: fixed;
+    right: 0;
+    left: 0;
+    top: 0;
+}
+.menu-bar.bg {
+    opacity: 0.6;
+    background: #000;
+    height: 40px;
+}
+.menu-bar.menu-options {
+    text-align: center;
+    margin-top: 4px;
+}
+.menu-bar.menu-options .add-new-btn {
+    background: #0e6efd;
+    padding: 3px;
+    width: 32px;
+    display: block;
+    margin: auto;
+    border-radius: 50%;
+    color: white;
+}
+#expenseTable tr td{
+    position: relative;
+}
+#expenseTable .opt-btn {
+    position: absolute;
+    right: 10px;
+    top: 5px;
+}
+#expenseTable .opt-btn a {
+    text-decoration: none;
+}
+
+#vendorList .vendor-record {
+    margin: 8px 3px;
+    background: #0e6efd;
+    padding: 12px 6px;
+    border-radius: 5px;
+    color: #fff;
+}
+
+.text-sm {
+    font-size: 9px;
+}
+
+.back-btn {
+    position: absolute;
+    right: 12px;
+}

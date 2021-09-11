@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Signin Template · Bootstrap v5.0</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+
+    <!-- Favicons -->
+    <meta name="theme-color" content="#7952b3">
+
+    <style>
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            user-select: none;
+        }
+
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+    </style>
+
+    <!-- Custom styles for this template -->
+    <link href="/css/signin.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+</head>
+
+<body class="text-center">
+    <main class="form-signin">
+        <form id="loginForm">
+            <h1>Welcome</h1>
+            <h1 class="h3 mb-3 fw-normal">Please Sign In</h1>
+            <label for="inputPassword" class="visually-hidden">Password</label>
+            <input name="userPwd" type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+            <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
+            <p class="mt-5 mb-3 text-muted">&copy; B2</p>
+        </form>
+    </main>
+    <script>
+        $(document).ready(function () {
+            "use strict";
+            $("#inputPassword").focus();
+            $("#loginForm").submit(function (event) {
+                event.preventDefault();
+                const userPwd = $("#inputPassword").val();
+                if (userPwd === '') {
+                    return;
+                }
+                loginNow({
+                    userPwd
+                });
+            });
+        });
+        function loginNow(body) {
+            $.ajax({
+                type: "POST",
+                url: "/api/user/signin",
+                async: false,
+                data: JSON.stringify(body),
+                contentType: "application/json",
+                complete: function (data) {
+                    if (data.status === 200) {
+                        if (data.responseJSON && data.responseJSON.login) {
+                            window.location.href = "/app/expense";
+                        } else {
+                            alert("Invalid login");
+                        }
+                    }
+                }
+            });
+        }
+    </script>
+</body>
+
+</html>
